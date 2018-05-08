@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诗意西铁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/syxt.css">
+    <style>
+
+        #scroller{
+            width:100%;
+            margin:0 auto;
+            text-align:justify;
+            padding-bottom:50px;
+        }
+       .banner{width:100%;height:200px;background: url('img/syxt.png') no-repeat;background-size:cover;background-position: center center;position:relative}
+       .bot{width:100%;height:40px;background:rgba(255,255,255,.77);position:absolute;bottom:0;padding:5px 10px}
+       .com{display: inline-block;width:70px;height:30px;line-height:30px;background: #E51C23;text-align: center;border-radius: 5px;color:#fff;box-sizing: border-box;}
+       .rule{background: #fff;border:1px solid #E51C23;color:#E51C23;margin-left:10px;}
+       .right{float:right;height:30px;line-height:30px}
+       .right>span{display: inline-block;margin-left:8px;font-size:16px;color:#333}
+       .active{color:#E51C23!important;text-decoration: underline}
+       .line{margin:10px 0;height:20px}
+       .new{font-size:18px;float:left;}
+       .count{font-size:14px;color:#E51C23;float:right}
+       .newest{width:100%;}
+       .item{width:33%;float:left;margin-bottom:10px}
+       .tops,.cover{width:100%;height:120px;}
+       .tops{position: relative}
+       .flower{background: none;height:30px;line-height:30px;padding:0 5px}
+       .all .item:nth-child(3n-1){margin:0 0.5%}
+       .num{color:#fff;font-size:10px;}
+       .item .fa{color:#fff;opacity: 0.43;font-size:16px;float:right;margin-top:8px;}
+       .title{font-size:12px;color:#363636;margin:5px 0 0 0 ;width:100%;height:17px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+       .aut{margin: 0}
+       .reciter,.station{font-size:10px;color:#aaa;}
+       .station{color:#BEC2C9}
+       .f_left,.f_center,.f_right{float:left}
+       .f_left{width:16%;text-align: center;height:45px;line-height:45px;}
+       .f_left img{width:34px;height:34px;border-radius:50%;}
+       .f_center{width: 44%;}
+       .f_right{width:14%;height:45px;line-height:45px;text-align: center;font-size:20px;}
+       .send_flw{width:70px;height:30px;line-height:30px;border-radius: 5px;border:1px solid #FF4081;color:#FF4081;background: #fff;float:right;text-align:center;margin: 8px 10px 0 0 }
+       @keyframes rotation{
+            from {-webkit-transform: rotate(0deg);}
+            to {-webkit-transform: rotate(360deg);}
+        }
+        .Rotation{
+            /* -webkit-transform: rotate(360deg); */
+            animation: rotation 3s linear infinite;
+            -moz-animation: rotation 3s linear infinite;
+            -webkit-animation: rotation 3s linear infinite;
+            -o-animation: rotation 3s linear infinite;
+        }
+        @keyframes zoomOutDown{
+            40%{opacity:1;transform:scale3d(.475,.475,.475) translate3d(0,-60px,0);animation-timing-function:cubic-bezier(.55,.055,.675,.19)}
+            to{opacity:0;transform:scale3d(.1,.1,.1) translate3d(0,2000px,0);transform-origin:center bottom;animation-timing-function:cubic-bezier(.175,.885,.32,1)}}
+            .ani{z-index: -1}
+            .zoomOutDown{animation:zoomOutDown 2s;position: absolute;top:260px;left:50%;margin-left:-64px;z-index:333;}
+        
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+	<style>
+		.u-flyer{width:50px;height:50px;border-radius: 50%;z-index:333}
+	</style>
+</head>
+<body  onload="loaded()">
+<div id="header">
+    <a href="javascript:;" onclick="javascript :history.back(-1);" class="glyphicon glyphicon-menu-left back lf"></a>
+    <span>专题活动</span>
+</div>
+<div id="wrapper">
+    <div id="scroller" >
+        <div class="banner">
+              <div class="bot">
+                  <div class="match com">我要参赛</div>
+                  <div class="rule com">活动规则</div>
+                  <div class="right">
+                       <span class="active first">最新</span>
+                       <span class="second">本单位</span>
+                       <span class="third">最赞</span>
+                  </div>
+              </div>
+        </div> 
+        <div class="newest">
+            <p class="line">
+                <span class="new">最新作品</span>
+                <span class="count">总数：236个</span>
+            </p>
+            <div class="all">
+                <div class="item">
+                    <div class="tops"  id="ad1" onclick="PlayPause(1)">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                        <audio id="aud1" controls hidden="true" loop="loop">
+                             <source src="audio/horse.mp3" >     
+                        </audio>
+                    </div>
+                    <p class="title">让梦想与你一起飞让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item" >
+                    <div class="tops"  id="ad2" onclick="PlayPause(2)">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                        <audio id="aud2" controls hidden="true" loop="loop">
+                             <source src="audio/gz.mp3" >     
+                        </audio>
+                    </div>
+                    <p class="title">全部都是你</p>
+                    <p class="aut">
+                        <span class="reciter">贾乃亮</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item" >
+                    <div class="tops"  id="ad3" onclick="PlayPause(3)">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                        <audio id="aud3" controls hidden="true" loop="loop">
+                            <source src="audio/horse.mp3" >     
+                        </audio>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div class="unit">
+            <p class="line">
+                <span class="new">本单位作品</span>
+                <span class="count">总数：200个</span>
+            </p>
+            <div class="all">
+                <div class="item" >
+                    <div class="tops"  id="ad4" onclick="PlayPause(4)">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                        <audio id="aud4" controls hidden="true" >
+                            <source src="audio/gz.mp3" >     
+                       </audio>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                        <audio  controls hidden="true" >
+                            <source src="audio/horse.mp3" >     
+                       </audio>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/2.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div class="great">
+            <p class="line">
+                <span class="new">最赞作品</span>
+                <span class="count">总数：36个</span>
+            </p>
+            <div class="all">
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/3.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="tops">
+                        <img class="cover" src="img/1.png" alt="">
+                        <div class="bot flower">
+                            <img src="img/flower.png" alt=""><span class="num">1262</span>
+                            <span class="fa fa-play-circle-o"></span>
+                        </div>
+                    </div>
+                    <p class="title">让梦想与你一起飞</p>
+                    <p class="aut">
+                        <span class="reciter">李四</span>
+                        <span class="station">宝鸡工务段</span>
+                    </p>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <img src="img/flowers.png" alt=""  class="ani">
+
+<div id="footer" >
+    <!-- <audio controls hidden="true" >
+        <source src="" >     
+    </audio> -->
+    <input type="hidden" id="hid">
+    <div class="f_left"><img src="img/1.png" alt=""></div>
+    <div class="f_center">
+            <p class="title">让梦想与你一起飞</p>
+            <p class="aut">
+                <span class="reciter">李四</span>
+                <span class="station">宝鸡工务段</span>
+            </p>
+    </div>
+    <div class="f_right">
+        <span class="fa fa-play"></span>
+    </div>
+    <div class="send_flw">送花 <span class="leave">5</span>/10</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jroll.js"></script>
+<script src="js/jquery.fly.min.js"></script>
+
+<script type="text/javascript">
+    var myScroll;
+    function loaded () {
+        //myScroll = new IScroll('#wrapper', { mouseWheel:true,click:true});
+      myScroll = new JRoll('#wrapper');
+    }
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    $('.unit,.great').hide();
+    $('.right span').click(function(){
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active')
+    })
+    $('.first').click(function(){
+        $('.newest').show();
+        $('.unit,.great').hide();    
+    })
+    $('.second').click(function(){
+        $('.unit').show();
+        $('.newest,.great').hide();    
+    })
+    $('.third').click(function(){
+        $('.great').show();
+        $('.unit,.newest').hide();    
+    })
+    $('.f_right').click(function(){
+        $('.f_right').children('.fa').toggleClass('fa-pause')
+        $('.f_left img').toggleClass('Rotation');
+        var i = $('#hid').val();
+        var aud = document.getElementById('aud'+i);
+        if(aud.paused){
+            $('#ad'+i).children('.flower').children('.fa').addClass('fa-pause-circle-o'); 
+            aud.play()
+        }
+        else{
+            $('#ad'+i).children('.flower').children('.fa').removeClass('fa-pause-circle-o');
+            aud.pause()
+        }
+    })
+var audios = document.getElementsByTagName('audio');
+function PlayPause(i){
+    var aa = $('#hid').val();
+    if(aa!="" && i!=aa){
+        var other =document.getElementById('aud'+aa).pause();  
+        $('#ad'+aa).children('.flower').children('.fa').removeClass('fa-pause-circle-o');   
+    }
+    var src = $('#ad'+i).children('img').attr('src');
+    var tit = $('#ad'+i).parent().children('.title').text();
+    var reciter = $('#ad'+i).parent().children('.aut').children('.reciter').text();
+    var station = $('#ad'+i).parent().children('.aut').children('.station').text();
+    var ausrc = $('#ad'+i).children('audio').children('source').attr('src');
+    $('#footer img').attr('src',src);
+    $('#footer .title').html(tit);
+    $('#footer .reciter').html(reciter);
+    $('#footer .station').html(station);
+    $('#hid').val(i);
+    var aud = document.getElementById('aud'+i);
+        if(aud.paused){
+            $('#ad'+i).children('.flower').children('.fa').addClass('fa-pause-circle-o'); 
+            $('.f_right').children('.fa').addClass('fa-pause');
+            $('.f_left img').addClass('Rotation');
+            aud.play();
+            addFly(event,src);
+        }
+        else{
+            $('#ad'+i).children('.flower').children('.fa').removeClass('fa-pause-circle-o');
+            $('.f_right').children('.fa').removeClass('fa-pause');
+            $('.f_left img').removeClass('Rotation');
+            aud.pause()
+        }
+       
+        
+}
+</script>
+<script>
+    $('.match').click(function(){
+        location.href="match.html"
+    })
+    $('.rule').click(function(){
+        location.href="rules.html"
+    })
+    $('.send_flw').click(function(){
+        var leave = $(this).children('.leave').text();
+        var new_leave = parseInt(leave) + 1;
+        $(this).children('.leave').text(new_leave);
+        if(new_leave>10){
+            $(this).css({'background':'#999','color':'#fff','border':'none'});
+            $(this).text('明日再来')
+        }
+        $('.ani').addClass('zoomOutDown');
+       setTimeout(function(){
+           $('.ani').removeClass('zoomOutDown')
+       },2000)
+    })
+    function addFly(event,src) {
+		    var offset = $('.f_left img').offset(), flyer = $('<img class="u-flyer" src="'+src+'"/>');
+		    flyer.fly({
+		        start: {
+		            left: event.pageX-40,
+		            top: event.pageY-20
+		        },
+		        end: {
+		            left: offset.left +20,
+		            top: offset.top +20,
+		            width: 0,
+                    height:0,
+
+		        }
+		    });
+		}
+		// $(function(){
+		// 	$(".tops").on("click",function(){
+		// 		addFly(event);
+		// 	})
+		// })
+</script>
+</body>
+</html>

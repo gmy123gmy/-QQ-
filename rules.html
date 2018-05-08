@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诗意西铁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/syxt.css">
+    <style>
+         #scroller{
+            width:100%;
+            margin:0 auto;
+            text-align:justify;
+            padding-bottom:50px;
+        }
+       .banner{width:100%;height:155px;background: url('img/syxt.png') no-repeat;background-size:cover;position:relative}
+       .rule{width:90%;padding:20px;border-radius: 15px;box-shadow: 0 0 15px #999;text-align: justify;margin:30px auto;font-size:18px;line-height:1.5em;}
+    </style>
+</head>
+<body  onload="loaded()">
+<div id="header">
+    <a href="javascript:;" onclick="javascript :history.back(-1);" class="glyphicon glyphicon-menu-left back lf"></a>
+    <span>活动规则</span>
+</div>
+<div id="wrapper">
+    <div id="scroller" >
+        <div class="banner"></div>
+        <div class="rule">
+                1.在APP首页开设专栏，放滚动栏和专题活动；设计封面图，采用“诗意西铁”四个字，两个风格“水墨”或“现代”，要有高铁高铁元素和朗读元素，如有陕西元素更好。要有青春气息。
+                2.专题页面为独立版块，分为活动规则、我要参赛和展示区域三个模块，活动规则点开为文字，我要参赛为投稿箱，投稿的必要元素：单位、姓名、作品名称（限20个字，浅色显示）、年龄、性别、工作岗位，作品上传按钮，封面上传按钮。其中单位、姓名、性别为自动读取，不可修改。
+                3.所有上传作品为音频，5分钟以内，同时上传一个封面图片。（回头给我封面图片尺寸和音频技术参数）
+                4.展示区域，总作品大致在300-400作用，为宫格排列，具体数量可自定，底部设置页码；作品显示封面、名称、单位、姓名、鲜花数。点击封面即可播放。作品排序默认为时间倒叙，设置排序选项，按热度和本单位。
+                5.用户上传的作品，经过审核后，进入展示区域。审核内容为投稿全部内容，采用电脑审核。审核分为通过和不通过，不通过要隐藏起来，不再次审核，最终审核通过的作品要能导出列表，列表项目为投稿全部内容和热度。
+                6.具有献花功能，每个用户每天有10朵花，可送任意10个作品，同一作品同一天不得重复送花。用户未送出的花朵每天不累加，24点重置。做好预防机制，避免刷票。
+                
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jroll.js"></script>
+<script type="text/javascript">
+    var myScroll;
+    function loaded () {
+        //myScroll = new IScroll('#wrapper', { mouseWheel:true,click:true});
+      myScroll = new JRoll('#wrapper');
+    }
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+</body>
+</html>

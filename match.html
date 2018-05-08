@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诗意西铁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/syxt.css">
+    <style>
+         #scroller{
+            width:100%;
+            margin:0 auto;
+            text-align:justify;
+            padding-bottom:50px;
+        }
+       .banner{width:100%;height:155px;background: url('img/syxt.png') no-repeat;background-size:cover;position:relative}
+       form{width:100%;}
+       input{height:30px;line-height:30px;border:1px solid #bbb;padding-left:10px;box-sizing: border-box;width:47%;margin:20px 0 0 0}
+       .name,.sex{float:right}
+       form input:first-child,.sta{width:100%;}
+       .up{width:80%;margin:30px auto 0;}
+       .item{width:122px;height:120px;line-height:120px;border-radius: 4px;border:1px solid #bbb;font-size:50px;text-align: center;color:#bbb;position:relative}
+       .left{float:left;}
+       .right{float: right;color:#0095DE}
+       .txt{position:absolute;width:100%;height:20px;line-height:20px;text-align: center;bottom:0px;font-size:12px;color:#000}
+       input.upload_input{display: block;position:absolute;top:-20px;width:100%;height:100%;font-size:12px;opacity: 0}
+       .clear{clear:both}
+       .sub{display: block;width:90%;height:38px;line-height:38px;margin:20px auto;border:none;background: #FF4081;color:#fff;border-radius: 5px;font-size:18px;}
+    </style>
+</head>
+<body  onload="loaded()">
+<div id="header">
+    <a href="javascript:;" onclick="javascript :history.back(-1);" class="glyphicon glyphicon-menu-left back lf"></a>
+    <span>我要参赛</span>
+</div>
+<div id="wrapper">
+    <div id="scroller" >
+        <div class="banner"></div>
+        <form action="">
+            <input type="text" placeholder="作品名称">
+            <input type="text" placeholder="单位">
+            <input type="text" placeholder="姓名" class="name">
+            <input type="text" placeholder="年龄">
+            <input type="text" placeholder="性别" class="sex">
+            <input type="text" placeholder="工作岗位" class="sta">
+            <div class="up">
+                <div class="item left">
+                    1
+                    <div class="txt">上传封面图片</div>
+                    <input type="file" class="upload_input">
+                </div>
+                <div class="item right">
+                    2
+                    <div class="txt">上传作品（音频格式）</div>
+                    <input type="file" class="upload_input">
+                    
+                 </div>
+                 <div class="clear"></div>
+            </div>
+            <input type="submit" value="提交参赛作品" class="sub">
+        </form>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jroll.js"></script>
+<script type="text/javascript">
+    var myScroll;
+    function loaded () {
+        //myScroll = new IScroll('#wrapper', { mouseWheel:true,click:true});
+      myScroll = new JRoll('#wrapper');
+    }
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+</body>
+</html>
